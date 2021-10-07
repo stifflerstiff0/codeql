@@ -7,8 +7,8 @@
 
 import javascript
 
-/** Gets the SARIF severity to associate an error. */
-int getSeverity() { result = 2 }
+/** Gets the SARIF severity to associate to an extractor error. */
+int getSeverity() { result = 1 }
 
 from Error error
 where

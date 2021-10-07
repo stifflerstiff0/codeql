@@ -65,9 +65,9 @@ class ExtractionError extends TExtractionError {
 
   /** Gets the SARIF severity of this error. */
   int getSeverity() {
-    // Unfortunately, we can't distinguish between errors and fatal errors in SARIF,
-    // so all errors have severity 2.
-    result = 2
+    // Extractor errors do not in general break the analysis, and many extractor errors are
+    // insignificant. Therefore we mark these in SARIF as warnings.
+    result = 1
   }
 }
 

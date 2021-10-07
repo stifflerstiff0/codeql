@@ -8,16 +8,16 @@
 import python
 
 /**
- * Gets the SARIF severity for errors.
+ * Gets the SARIF severity level that indicates a warning.
  *
  * See point 3.27.10 in https://docs.oasis-open.org/sarif/sarif/v2.0/sarif-v2.0.html for
- * what error means.
+ * what warning means.
  */
-int getErrorSeverity() { result = 2 }
+int getWarnSeverity() { result = 1 }
 
 from SyntaxError error, File file
 where
   file = error.getFile() and
   exists(file.getRelativePath())
 select error, "Extraction failed in " + file + " with error " + error.getMessage(),
-  getErrorSeverity()
+  getWarnSeverity()

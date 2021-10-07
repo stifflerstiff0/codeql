@@ -22,13 +22,13 @@ private predicate knownErrors(@diagnostic d, string msg, int sev) {
   exists(string numErr, Location l |
     diagnostics(d, 6, _, numErr, _, l) and
     msg = "Frontend errors in file: " + l.getFile().getAbsolutePath() + " (" + numErr + ")" and
-    sev = getErrorSeverity()
+    sev = getWarnSeverity()
   )
   or
   exists(string filename, Location l |
     diagnostics(d, 7, _, "Exception compiling file " + filename, _, l) and
     msg = "Extraction incomplete in file: " + filename and
-    sev = getErrorSeverity()
+    sev = getWarnSeverity()
   )
   or
   exists(string errMsg, Location l |

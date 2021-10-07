@@ -9,6 +9,9 @@
 import csharp
 import semmle.code.csharp.commons.Diagnostics
 
+/** Gets the SARIF severity level that indicates a warning. */
+private int getWarnSeverity() { result = 1 }
+
 private newtype TDiagnosticError =
   TCompilerError(CompilerError c) or
   TExtractorError(ExtractorError e)
@@ -60,4 +63,4 @@ private class DiagnosticExtractorError extends DiagnosticError {
 }
 
 from DiagnosticError error
-select error.getMessage(), 2
+select error.getMessage(), getWarnSeverity()
